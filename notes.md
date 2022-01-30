@@ -26,7 +26,7 @@
 
 - Despite advancements (Webpack, frameworks, Node) at the end of the day Javascript is a single-threaded, interpreted language.
 
-  ![](/async-thread.drawio.svg)
+  ![](/img/sync-thread.svg)
 
 - Thus it is (comparatively) slow and prone to bottlenecks and single-points of failure. Our transpiled TypeScript and then compiled Javascript is read line by line from top to bottom by the browser's interpreter.
 
@@ -34,15 +34,15 @@
 
 - The antidote is to handle these potential blockers asynchronously. This means the request is sent and the rest of the code continues to run. When the data returns it then rejoins the main flow of execution but the flow of execution is not halted in the meantime.
 
-  ![](/async.drawio.svg)
+  ![](/img/async.svg)
 
 - This creates the functional illusion of multi-threadedness despite JS limitations.
 
 ### Waiters
 
-![](/sync-waiter.drawio.svg)
+![](/img/sync-waiter.svg)
 
-![](/multi-dine.drawio.svg)
+![](/img/thread-waiter.svg)
 
 ### Syntax: Basic setup
 
