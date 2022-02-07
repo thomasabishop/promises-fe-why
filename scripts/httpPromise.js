@@ -1,19 +1,19 @@
-const https = require("https");
+const https = require('https');
 
 module.exports = function (params) {
   return new Promise((resolve, reject) => {
     let req = https.request(params, (response) => {
       // Reject on network error
       if (response.statusCode < 200 || response.statusCode >= 300) {
-        return reject(new Error("statusCode=" + response.statusCode));
+        return reject(new Error('statusCode=' + response.statusCode));
       }
       // Aggregate response data
       let body = [];
-      response.on("data", (chunk) => {
+      response.on('data', (chunk) => {
         body.push(chunk);
       });
       // resolve on end
-      response.on("end", () => {
+      response.on('end', () => {
         try {
           body = JSON.parse(Buffer.concat(body).toString());
         } catch (e) {
@@ -23,10 +23,9 @@ module.exports = function (params) {
       });
     });
     // Reject on request error
-    req.on("error", (err) => {
+    req.on('error', (err) => {
       reject(err);
     });
-    // IMPORTANT
     req.end();
   });
 };
