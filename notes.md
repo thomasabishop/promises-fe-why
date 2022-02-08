@@ -4,7 +4,7 @@
 
 ### Concept
 
-- A promise is constuct in Javascript that represents the intermediate stage of an execution that returns a value.
+- A promise is a structure in Javascript that represents the intermediate stage of an execution that returns a value.
 
 - It comprises an object that takes as parameters two functions corresponding to the states of resolve and reject.
 
@@ -22,6 +22,8 @@
     }, failureCallback);
   }, failureCallback);
   ```
+
+- Contrast this with `catch` blocks
 
 ### Refresher on asynchronicity
 
@@ -59,10 +61,11 @@
 
 ### Observables versus promises: key differences to consider
 
-- Bear in mind this is a bit apples and oranges but Angular enshrines Reactive Programming principles so probably best to lean into that rather than introduce promises, going forwar/ when possible.
+- Bear in mind this is a bit apples and oranges but Angular enshrines Reactive Programming principles so probably best to lean into that rather than introduce promises, going forward/ when possible.
 - Promises execute at definition. Observables are not executed until a consumer subscribes. This arguably gives you freedom to work more horizontally, you less tied to a sequential vertical block.
 - Promises are discrete in that execute just once and you are tied to the initial resolution value in each subsequent `then`. To restart you have to rerun the promise or create a new one. In contrast subscriptions are a continuous stream of data you can tap into at different points through subscription/unsubscription.
-- Being discrete, promises are not cancellable. You would have to remove the promise from the code to stop its propagation.
+- Promises are not cancellable. You would have to remove the promise from the code to stop its propagation.
+  - Would rejection be a form of cancellation perhaps?
 - Think of a tap (observables) versus a syringe (promises)
 
 ### Discussion points

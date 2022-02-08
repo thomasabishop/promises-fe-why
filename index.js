@@ -7,14 +7,14 @@ const basicRequest = () => {
   return httpPromise(`${apiPath}&ingr=coffee`)
     .then((res) => {
       console.log(res.parsed[0].food?.nutrients);
-      //      res.parsed[0].food?.nutrients;
+      res.parsed[0].food?.nutrients;
     })
     .catch((err) => {
       console.log('oh no: ' + err);
+    })
+    .finally(() => {
+      console.log('Process complete');
     });
-  // .finally(() => {
-  //   console.log('Process complete');
-  // });
 };
 
 // Process data
@@ -31,10 +31,10 @@ function listCalories(foods) {
 }
 
 let fruits = ['banana', 'plum', 'melon', 'pear', 'strawberry', 'blackberry', 'mango', 'kiwi'];
-// listCalories(fruits);
-// basicRequest();
+//listCalories(fruits);
+//basicRequest();
 
-// basicRequest().then(() => listCalories(fruits));
+//basicRequest().then(() => listCalories(fruits));
 
 const getCalForSingleFood = (food) => {
   return httpPromise(`${apiPath}&ingr=${food}`)
@@ -46,7 +46,7 @@ const getCalForSingleFood = (food) => {
 };
 
 function totalMealCals() {
-  const promise1 = getCalForSingleFood('steak');
+  const promise1 = getCalForSingleFood('burger');
   const promise2 = getCalForSingleFood('coleslaw');
   const promise3 = getCalForSingleFood('cola');
   Promise.all([promise1, promise2, promise3]).then((vals) => {
@@ -54,7 +54,7 @@ function totalMealCals() {
   });
 }
 
-// totalMealCals();
+totalMealCals();
 
 async function getCallForVegetable(veg) {
   try {
